@@ -29,7 +29,7 @@
     <![endif]-->
     <script src="OpenLayers-2.13.1/OpenLayers.js"></script>
     <script>
-      function init() {
+     function init() {
         map = new OpenLayers.Map("mapdiv");
         var mapnik = new OpenLayers.Layer.OSM();
         map.addLayer(mapnik);
@@ -42,19 +42,19 @@
         var zoom = 18;
     
         var icon = new OpenLayers.Icon('img/university.png');
-    var markers = new OpenLayers.Layer.Markers( "Markers");
+        var markers = new OpenLayers.Layer.Markers( "Markers");
         map.addLayer(markers);
 
-    var layer_switcher= new OpenLayers.Control.LayerSwitcher({});
-    map.addControl(layer_switcher);
+        var layer_switcher= new OpenLayers.Control.LayerSwitcher({});
+        map.addControl(layer_switcher);
         markers.addMarker(new OpenLayers.Marker(lonlat,icon));
-            map.setCenter(lonlat, zoom);
+        map.setCenter(lonlat, zoom);
       }
     </script>
     <style>
-    #mapdiv { width:1150px; height:550px;}
-    #OL_Icon_20_innerImage{width: 45px!important;height: 70px!important}
-    div.olControlAttribution { bottom:3px; }
+        #mapdiv { width:1150px; height:550px;}
+        #OL_Icon_20_innerImage{width: 45px!important;height: 70px!important}
+        div.olControlAttribution { bottom:3px; }
     </style>
 
 </head>
