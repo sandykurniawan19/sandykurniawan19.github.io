@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MENAMPILKAN MARKER DENGAN OPENLAYERS</title>
+<script type="text/javascript" src="OpenLayers-2.13.1/OpenLayers.js"></script>
+<script type="text/javascript">
+ window.onload = function() {
+  // set layer
+  var osm = new OpenLayers.Layer.OSM('OSM');
+
+  // set icon marker
+  var icon = new OpenLayers.StyleMap({
+   'externalGraphic': 'bread.png',
+   'graphicOpacity': 1.0,
+   'graphicWith': 16,
+   'graphicHeight': 32,
+   'graphicYOffset': -32
+  });
+
+  var map = new OpenLayers.Map({
+   // div element
+   'div': 'map',
+
+   // set center
+   'center': new OpenLayers.LonLat(13125273.031, -237257.9905),
+
+   // set zoom
+   'zoom':5,
+
+   // set layers
+   'layers': [osm]
+  });
+
+ // set vector marker
+  var vector_marker = new OpenLayers.Layer.Vector('Marker', {
+   'styleMap': icon,
+   'strategies': [new OpenLayers.Strategy.Fixed()],
+   'protocol': new OpenLayers.Protocol.HTTP({
+    'url': 'marker.php',
+    'params': {},
+    'format': new OpenLayers.Format.GeoJSON()
+   })
+  });
+
+  // add to layer
+  map.addLayer(vector_marker);
+ }
+</script>
+</head>
+
+<body>
+</body>
+</html>
